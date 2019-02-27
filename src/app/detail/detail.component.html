@@ -1,0 +1,59 @@
+<ng-container *ngIf="error; else elseTemplate">
+  <div class="row justify-content-center animated fadeInUp" style="width:100%">
+    <h1 class="my-3">
+      <i class="fas fa-exclamation-triangle">No page found</i>
+    </h1>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <ng-container *ngIf="cargando; else elseTemplate">
+    <img
+      style="margin: 0 auto; display: block;"
+      src="../../assets/loading.gif"
+    />
+  </ng-container>
+  <ng-template #elseTemplate>
+    <div
+      class="row justify-content-center animated fadeInUp px-2"
+      style="width:100%"
+    >
+      <div class="col-md-6 my-5 text-center">
+        <img style="height:50vh" src="{{ cervezaUnica.image_url }}" />
+        <h3 style="color: #00897b">{{ cervezaUnica.name }}</h3>
+        <h4>{{ cervezaUnica.tagline }}</h4>
+      </div>
+      <div class="col-md-6 my-5 text-center">
+        <h3 style="color: #00897b">Description</h3>
+        <p>{{ cervezaUnica.description }}</p>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <p>Alcohol By Volume (ABV): {{ cervezaUnica.abv }}º</p>
+            <p>International Bitterness Unit (IBU): {{ cervezaUnica.ibu }}</p>
+            <p>Target Original Gravity: {{ cervezaUnica.target_og }}</p>
+            <p>Target Final Gravity: {{ cervezaUnica.target_fg }}</p>
+          </div>
+          <div class="col-6">
+            <p>European Brewery Convention (EBC): {{ cervezaUnica.srm }}</p>
+            <p>Standard Reference Method (SRM): {{ cervezaUnica.srm }}</p>
+            <p>PH: {{ cervezaUnica.ph }}</p>
+            <p>Attenuation Level: {{ cervezaUnica.attenuation_level }}</p>
+          </div>
+        </div>
+        <h3 style="color: #00897b">Ingredients</h3>
+        <h4>Matls</h4>
+        <div class="row justify-content-center">
+          <div class="col-4" *ngFor="let item of cervezaUnica.ingredients.malt">
+            <p>
+              <strong>{{ item.name }}</strong> : {{ item.amount.value
+              }}{{ item.amount.unit }}
+            </p>
+          </div>
+        </div>
+        <h4>Yeast</h4>
+        <p>{{ cervezaUnica.ingredients.yeast }}</p>
+        <h3 style="color: #00897b">Brewers Tips</h3>
+        <p>{{ cervezaUnica.brewers_tips }}</p>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

@@ -1,18 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { ConsultasApiService } from "./consultas-api.service";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { Categoria1Component } from "./categoria1/categoria1.component";
+import { Categoria2Component } from "./categoria2/categoria2.component";
+import { Categoria3Component } from "./categoria3/categoria3.component";
+import { CabeceraComponent } from './cabecera/cabecera.component';
+import { FooterComponent } from './footer/footer.component';
+import { DetailComponent } from './detail/detail.component';
+import { FiltroPipe } from './filtro.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Categoria1Component,
+    Categoria2Component,
+    Categoria3Component,
+    CabeceraComponent,
+    FooterComponent,
+    DetailComponent,
+    FiltroPipe,
+    
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [ConsultasApiService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
