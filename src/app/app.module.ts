@@ -12,6 +12,8 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailComponent } from './detail/detail.component';
 import { FiltroPipe } from './filtro.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { FiltroPipe } from './filtro.pipe';
     FiltroPipe,
     
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [ConsultasApiService],
   bootstrap: [AppComponent]
 })
